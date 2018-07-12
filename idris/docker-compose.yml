@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  me:
+    build:
+      context: .
+    volumes:
+      - /idris:/idris
+    working_dir: /idris
+    #entrypoint: /usr/bin/env tmux -2 new-session -s "idris" vim \; split-window -v -p 20 "idris" \; last-pane
+    entrypoint: /usr/bin/env tmux -2 new-session -s "idris" "vim rna-transcription/src/RnaTranscription.idr" \; split-window -v -p 10 "bash" \; split-window -t 0 -h "vim rna-transcription/src/Test/RnaTranscription.idr" \; select-pane -t 0
+
